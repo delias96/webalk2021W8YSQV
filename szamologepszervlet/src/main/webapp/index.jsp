@@ -1,9 +1,11 @@
+<%@page import="szamologepszervlet.ResultDto"%>
 <html>
 <body>
 <%
-Double result = (Double) request.getAttribute("result");
+szamologepszervlet.ResultDto result = (request.getAttribute("result") != null) ? (szamologepszervlet.ResultDto) request.getAttribute("result"):
+	new ResultDto();
 String resultText = (result == null) ?
-		"" : "result " + result.toString();
+		"" : "result " + result.getResult().toString();
 %>
 <form method="post" action="szamologep.do">
 <input type="text" name="a" /><br>
