@@ -20,7 +20,7 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public ArticleDto getById(String id) {
+	public ArticleDto getById(Long id) {
 		return articleRepository.getById(id);
 	}
 
