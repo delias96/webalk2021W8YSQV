@@ -1,5 +1,8 @@
 package hu.me.iit.webalk.dependency;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ServiceImpl implements Service {
 
 	private final Dependency dependency;
@@ -22,4 +25,15 @@ public class ServiceImpl implements Service {
 		return dependency.helpNoParameterReturnValue();
 	}
 
+	public void callHelpAndPassParameter5() {
+		dependency.helpWithParameterNoReturnValue(5);
+	}
+
+	@Override
+	public String getImportantAbstract(String name) {
+		String text= name.substring(0,3).concat("...");
+		String strongtext =  dependency.important(text);
+		return strongtext;
+	}
+	
 }

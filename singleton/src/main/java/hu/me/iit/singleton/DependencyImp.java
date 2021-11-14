@@ -1,10 +1,9 @@
-package hu.me.iit.webalk.dependency;
+package hu.me.iit.singleton;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class DependencyImpl implements Dependency {
-
+public class DependencyImp implements Dependency {
 	@Override
 	public void helpNoParameterNoReturnValue() {
 		
@@ -26,5 +25,4 @@ public class DependencyImpl implements Dependency {
 		return text;
 		
 	}
-
 }

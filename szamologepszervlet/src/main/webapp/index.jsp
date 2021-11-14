@@ -1,24 +1,41 @@
-<%@page import="szamologepszervlet.ResultDto"%>
 <html>
+<head>
+    <title>Calculator</title>
+</head>
 <body>
 <%
-szamologepszervlet.ResultDto result = (request.getAttribute("result") != null) ? (szamologepszervlet.ResultDto) request.getAttribute("result"):
-	new ResultDto();
-String resultText = (result == null) ?
-		"" : "result " + result.getResult().toString();
-%>
-<form method="post" action="szamologep.do">
-<input type="text" name="a" /><br>
-<input type="text" name="b" /><br>
-<select name="operator">
-<option value="+" > + </option>
-<option value="-" > - </option>
-<option value="*" > * </option>
-<option value="/" > / </option>
-</select><br>
+// ha servettol jott, akkor van, ha elso keres, akkor nincs 
+szamologepszervlet.ResultDto result = (request.getAttribute("result") != null) ? 
+			(szamologepszervlet.ResultDto) request.getAttribute("result") :
+			new szamologepszervlet.ResultDto();
 
-<%= resultText %>
-<input type="submit" /><br>
+
+
+String resultText;
+try {
+		resultText = (result == null) ?
+				"" : "result " + result.getResult().toString();
+	}catch(NullPointerException ex){
+		resultText="";
+	}
+%>
+
+<form method="post" action="/<%=request.getContextPath()%>/szamologep.do">
+    <input type="text" name="a" value="<%= result.getA() %>"/><br>
+    <input type="text" name="b" value="<%= result.getB() %>"/><br>
+    <select name="operator">
+        <option value="+" <%="+".equals(result.getOperator())? "selected" : ""%> > +
+        <option value="-" <%="-".equals(result.getOperator())? "selected" : ""%> > -
+        <option value="" <%="".equals(result.getOperator())? "selected" : ""%> > *
+        <option value="/" <%="/".equals(result.getOperator())? "selected" : ""%> > /
+    </select><br>
+
+<%= resultText %> <br>
+    <input type="submit" /><br>
 </form>
+
+
+
+
 </body>
 </html>

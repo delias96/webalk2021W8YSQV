@@ -1,4 +1,5 @@
-package hu.me.iit.webalk.dependency;
+package hu.me.iit.singleton;
+
 
 public interface Dependency {
 	void helpNoParameterNoReturnValue();

@@ -13,13 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/szamologep.do")
-public class Servlet2 extends HttpServlet {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class SzamaologepServlet extends HttpServlet{
+	
 	private Double checkAndGetValueAsDouble(HttpServletRequest req, String parameterName, List<String> errorList) {
 		Double value = 0.0;
 		String stringValue = req.getParameter(parameterName);
@@ -32,10 +27,10 @@ public class Servlet2 extends HttpServlet {
 				errorList.add("a(z) " + parameterName + " parameter szam kell legyen");
 			}
 		}
-		
 		return value;
 	}
 	
+
 	
 	private void checkOperator(String operator, List<String> errorList) {
 		
@@ -84,6 +79,4 @@ public class Servlet2 extends HttpServlet {
 		
 		rd.forward(req, resp);
 	}
-
-
 }
