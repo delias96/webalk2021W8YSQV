@@ -24,13 +24,14 @@ public class People {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public People toPeople() {
+		return new People(null,age,name);
+	}
 	public People() {
 		
 	}
 	
 	public People(Long id, int age, String name) {
-		super();
 		this.id = id;
 		this.age = age;
 		this.name = name;
